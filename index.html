@@ -186,10 +186,18 @@
         }
 
         .language-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             gap: 1rem;
             margin-top: 1.5rem;
+        }
+
+        .language-row {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            width: 100%;
         }
 
         .language-btn {
@@ -205,6 +213,8 @@
             border-radius: 4px;
             position: relative;
             overflow: hidden;
+            min-width: 120px;
+            text-align: center;
         }
 
         .language-btn::before {
@@ -231,16 +241,23 @@
         }
 
         @media (max-width: 480px) {
-            .language-grid {
-                grid-template-columns: 1fr;
-            }
-            
             .language-container {
                 padding: 1.5rem;
             }
 
             .photo-container {
                 max-width: 220px;
+            }
+            
+            .language-row {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .language-btn {
+                width: 100%;
+                max-width: 200px;
             }
         }
     </style>
@@ -264,11 +281,22 @@
         <p class="welcome-message">Informazioni per il turismo</p>
         
         <div class="language-grid">
-            <button class="language-btn" onclick="window.location.href='index_it.html'">Italiano</button>
-            <button class="language-btn" onclick="window.location.href='index_en.html'">English</button>
-            <button class="language-btn" onclick="window.location.href='index_es.html'">Español</button>
-            <button class="language-btn" onclick="window.location.href='index_fr.html'">Français</button>
-            <button class="language-btn" onclick="window.location.href='index_de.html'">Deutsch</button>
+            <!-- Prima riga - solo italiano al centro -->
+            <div class="language-row">
+                <button class="language-btn" onclick="window.location.href='index_it.html'">Italiano</button>
+            </div>
+            
+            <!-- Seconda riga - due pulsanti -->
+            <div class="language-row">
+                <button class="language-btn" onclick="window.location.href='index_en.html'">English</button>
+                <button class="language-btn" onclick="window.location.href='index_es.html'">Español</button>
+            </div>
+            
+            <!-- Terza riga - altri due pulsanti -->
+            <div class="language-row">
+                <button class="language-btn" onclick="window.location.href='index_fr.html'">Français</button>
+                <button class="language-btn" onclick="window.location.href='index_de.html'">Deutsch</button>
+            </div>
         </div>
     </div>
 
