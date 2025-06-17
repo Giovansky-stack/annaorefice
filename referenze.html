@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referenze - Chiesa di San Sossio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8B5A2B;
+            --secondary: #A67C52;
+            --dark: #3E2723;
+            --light: #F5EDE0;
+            --gray: #D2B48C;
+            --accent: #6D4C41;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: 
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23A67C52" stroke-width="0.5" opacity="0.2"/></svg>'),
+                linear-gradient(to bottom, rgba(245, 237, 224, 0.9), rgba(245, 237, 224, 0.9));
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .loader-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: opacity 0.6s ease-out;
+        }
+
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 3px solid var(--gray);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1.2s linear infinite;
+            margin-bottom: 30px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .content-container {
+            display: none;
+            background-color: var(--light);
+            width: 90%;
+            max-width: 500px;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(62, 39, 35, 0.15);
+            text-align: center;
+            animation: slideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            border: 1px solid var(--gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+        }
+
+        .photo-container {
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto 1.5rem;
+            padding: 10px;
+            background-color: var(--light);
+            border: 1px solid var(--gray);
+            box-shadow: 
+                inset 0 0 0 8px var(--light),
+                0 0 0 1px var(--gray),
+                0 4px 15px rgba(62, 39, 35, 0.2);
+            position: relative;
+        }
+
+        .photo-container::before {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            border: 1px solid rgba(139, 90, 43, 0.3);
+            pointer-events: none;
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 1px solid var(--gray);
+        }
+
+        .welcome-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .page-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .reference-text {
+            color: var(--dark);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gray), transparent);
+            margin: 1.5rem auto;
+            width: 80%;
+            position: relative;
+        }
+
+        .divider::after {
+            content: "✠";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--light);
+            padding: 0 10px;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .back-btn {
+            background: var(--light);
+            color: var(--dark);
+            border: 1px solid var(--gray);
+            padding: 0.8rem 1.5rem;
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1rem;
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .back-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 90, 43, 0.1), transparent);
+            transition: all 0.6s;
+        }
+
+        .back-btn:hover {
+            background-color: var(--primary);
+            color: var(--light);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(139, 90, 43, 0.3);
+        }
+
+        .back-btn:hover::before {
+            left: 100%;
+        }
+
+        @media (max-width: 480px) {
+            .content-container {
+                padding: 1.5rem;
+            }
+
+            .photo-container {
+                max-width: 220px;
+            }
+            
+            .page-title {
+                font-size: 1.5rem;
+            }
+            
+            .reference-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader-overlay" id="loader">
+        <div class="loader"></div>
+        <div class="loader-text">Caricamento pagina...</div>
+    </div>
+    
+    <div class="content-container" id="content">
+        <div class="welcome-icon">⛪</div>
+        <h1 class="page-title">Referenze</h1>
+        
+        <div class="photo-container">
+            <img src="1.jpg" alt="Chiesa di San Sossio">
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="reference-text">
+            <p>Sito a cura di Anna Orefice</p>
+            <p>Contenuti elaborati dagli alunni del Liceo Linguistico Carlo Miranda</p>
+        </div>
+        
+        <button class="back-btn" onclick="window.location.href='index.html'">Torna alla Home</button>
+    </div>
+
+    <script>
+        window.addEventListener('load', function() {
+            // Nascondi il loader dopo 1.5 secondi
+            setTimeout(function() {
+                var loader = document.getElementById('loader');
+                if(loader) {
+                    loader.style.opacity = '0';
+                    
+                    // Nascondi completamente dopo la transizione
+                    setTimeout(function() {
+                        loader.style.display = 'none';
+                        var content = document.getElementById('content');
+                        if(content) {
+                            content.style.display = 'block';
+                        }
+                    }, 600); // Corrisponde alla durata della transizione
+                }
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
