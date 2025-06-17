@@ -264,10 +264,11 @@
         <p class="welcome-message">A cura di Anna Orefice</p>
         
         <div class="language-grid">
-            <button class="language-btn">Italiano</button>
-            <button class="language-btn">English</button>
-            <button class="language-btn">Español</button>
-            <button class="language-btn">Français</button>
+            <button class="language-btn" onclick="window.location.href='index_it.html'">Italiano</button>
+            <button class="language-btn" onclick="window.location.href='index_en.html'">English</button>
+            <button class="language-btn" onclick="window.location.href='index_es.html'">Español</button>
+            <button class="language-btn" onclick="window.location.href='index_fr.html'">Français</button>
+            <button class="language-btn" onclick="window.location.href='index_de.html'">Deutsch</button>
         </div>
     </div>
 
@@ -289,33 +290,6 @@
                     }, 600); // Corrisponde alla durata della transizione
                 }
             }, 1500);
-            
-            // Gestione pulsanti lingua
-            const languageUrls = {
-                "Italiano": "index_it.html",
-                "English": "index_en.html",
-                "Español": "index_es.html",
-                "Français": "index_fr.html"
-            };
-            
-            var buttons = document.querySelectorAll('.language-btn');
-            if(buttons) {
-                buttons.forEach(button => {
-                    button.addEventListener('click', function() {
-                        var selectedLanguage = this.textContent;
-                        if(languageUrls[selectedLanguage]) {
-                            // Aggiungi effetto visivo al click
-                            this.style.transform = 'translateY(2px)';
-                            this.style.boxShadow = 'none';
-                            
-                            // Reindirizza dopo un breve ritardo
-                            setTimeout(() => {
-                                window.location.href = languageUrls[selectedLanguage];
-                            }, 300);
-                        }
-                    });
-                });
-            }
         });
     </script>
 </body>
