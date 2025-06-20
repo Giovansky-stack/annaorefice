@@ -71,9 +71,35 @@
             margin: 10px;
         }
         
-        .audio-btn {
+        .history-btn {
+            display: inline-block;
+            background-color: #2e8b57;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+            margin: 10px;
+        }
+        
+        .video-btn {
             display: inline-block;
             background-color: #1a5276;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+            margin: 10px;
+        }
+        
+        .yt-btn {
+            display: inline-block;
+            background-color: #cc0000;
             color: white;
             padding: 12px 25px;
             text-decoration: none;
@@ -88,8 +114,16 @@
             background-color: #6b0000;
         }
         
-        .audio-btn:hover {
+        .history-btn:hover {
+            background-color: #1f6d3d;
+        }
+        
+        .video-btn:hover {
             background-color: #0e3a5a;
+        }
+        
+        .yt-btn:hover {
+            background-color: #a30000;
         }
         
         .header {
@@ -126,17 +160,19 @@
             <p>Frattamaggiore - Naples</p>
         </div>
         
-        <h1>matériel d'information</h1>
+        <h1>Matériel d'information</h1>
         
         <p>Découvrez la richesse artistique et historique de la Basilique Pontificale San Sossio à travers notre brochure officielle.</p>
         
         <div class="pdf-viewer">
             <h2>Ressources disponibles</h2>
-            <p>Cliquez sur les liens ci-dessous pour visualiser ou télécharger notre brochure ou regarder le guide vidéo.</p>
+            <p>Cliquez sur les liens ci-dessous pour visualiser ou télécharger notre matériel ou regarder les guides vidéo.</p>
             
             <div class="button-container">
                 <a href="BROCHURE_BASILICA_PONTIFICIA_FRANCAIS.pdf" class="download-btn" download>Télécharger la brochure (PDF)</a>
-                <a href="https://youtu.be/mh0u3LsauSc" class="audio-btn" target="_blank">Voir le guide vidéo (YouTube)</a>
+                <a href="HISTOIRE_SAN_SOSSIO.pdf" class="history-btn" download>Télécharger l'histoire (PDF)</a>
+                <a href="https://youtu.be/mh0u3LsauSc" class="video-btn" target="_blank">Guide vidéo 1 (YouTube)</a>
+                <a href="https://youtu.be/uMeqfPceL5s" class="yt-btn" target="_blank">Guide vidéo 2 (YouTube)</a>
             </div>
         </div>
         
